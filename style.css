@@ -1,0 +1,16 @@
+body {
+    text-align: center;
+    width: 400px;
+    height: 400px;
+    border: solid 1px #000000;
+}
+
+.box {
+    box-sizing: border-box;
+    float: left;
+    border: 1px solid #404040;
+    margin: 0;
+    padding: 0;
+    width: 100px;
+    height: 100px;
+}
