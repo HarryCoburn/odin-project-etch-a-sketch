@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
 </head>
 <body>
+    <button id = "clearGrid">Clear The Grid</button>
     <div id = "container" class="flex-grid">
 
     </div>
@@ -13,11 +14,42 @@
 
 <script>
     let container = document.querySelector('#container');
-    for (let i = 0; i < 16; i++) {
-        let div = document.createElement('div');
-        div.classList.add('box');
-        container.appendChild(div);
+    const box = document.querySelector('.box');
+    let boxNumber = 4;
+    let gridWidth = 400;
+    let gridHeight = 400;
+
+    function createGrid() {
+        let percentage = (100/boxNumber) + '%';
+        for (let i = 0; i < (boxNumber ** 2); i++) {
+            let div = document.createElement('div');
+            div.classList.add('box');
+            container.appendChild(div);
+        }
+        const boxes = document.querySelectorAll('.box');
+        boxes.forEach(box => {
+            box.style.width = percentage;
+            box.style.height = percentage;
+        });
+        boxes.forEach(box => box.addEventListener('mouseover', hoverColor));
     }
+
+    function hoverColor(e) {
+        e.target.style.backgroundColor = 'blue';
+    }
+
+    document.querySelector('#clearGrid').addEventListener('click', clearGrid);
+
+    function clearGrid() {
+        boxNumber = prompt("How many boxes per row?");
+        while (container.firstChild) {
+            container.removeChild(container.firstChild);
+        }
+        createGrid();
+    }
+
+    createGrid();
+
 </script>
 
 </html>
